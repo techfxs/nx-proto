@@ -1,3 +1,5 @@
+import { Hero } from '@nx-proto/mw-ui';
+
 export default function Index() {
   /*
    * Replace the elements below with your own.
@@ -6,13 +8,18 @@ export default function Index() {
    */
   return (
     <div>
-      <div className="wrapper">
+      <div className="wrapper mt-2">
         <div className="container">
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
               Welcome @nx-proto/mw-home 👋
             </h1>
+            <Hero
+              title="Welcmoe to our Demo"
+              subtitle="Build something amazing today"
+              cta="Get Started"
+            />
           </div>
 
           <div id="hero" className="rounded">
