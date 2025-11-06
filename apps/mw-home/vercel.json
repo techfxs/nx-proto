@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd ../.. && npx nx build mw-home --prod",
+  "outputDirectory": "../../dist/apps/mw-home/.next",
+  "installCommand": "cd ../.. && npm ci",
+  "framework": "nextjs",
+  "ignoreCommand": "exit 0"
+}
