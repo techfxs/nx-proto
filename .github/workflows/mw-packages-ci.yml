@@ -40,5 +40,5 @@ jobs:
       - name: Typecheck mw-ui
         run: npx nx typecheck mw-ui
 
-      - run: npx nx fix-ci
-        if: always()
+      # - run: npx nx fix-ci
+      #   if: always()

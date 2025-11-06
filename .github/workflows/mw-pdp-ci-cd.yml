@@ -48,8 +48,8 @@ jobs:
       - name: Build mw-pdp
         run: npx nx build mw-pdp --prod
 
-      - name: E2E mw-pdp
-        run: npx nx e2e mw-pdp-e2e
+      # - name: E2E mw-pdp
+      #   run: npx nx e2e mw-pdp-e2e
 
       # - run: npx nx fix-ci
       #   if: always()

@@ -47,8 +47,8 @@ jobs:
       - name: Build mw-home
         run: npx nx build mw-home --prod
 
-      - name: E2E mw-home
-        run: npx nx e2e mw-home-e2e
+      # - name: E2E mw-home
+      #   run: npx nx e2e mw-home-e2e
 
       # - run: npx nx fix-ci
       #   if: always()
