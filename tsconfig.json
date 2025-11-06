@@ -11,6 +11,15 @@
     },
     {
       "path": "./packages/mw-ui"
+    },
+    {
+      "path": "./packages/mw-experiments"
+    },
+    {
+      "path": "./apps/mw-pdp-e2e"
+    },
+    {
+      "path": "./apps/mw-pdp"
     }
   ]
 }

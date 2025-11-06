@@ -1,13 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "references": [
-    {
-      "path": "../../packages/mw-ui"
-    },
-    {
-      "path": "../../packages/mw-experiments"
-    }
-  ],
   "compilerOptions": {
     "jsx": "preserve",
     "noEmit": true,
@@ -25,23 +17,21 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@nx-proto/mw-ui": ["../../packages/mw-ui/src/index.ts"],
-      "@nx-proto/mw-experiments": ["../../packages/mw-experiments/src/index.ts"]
+      "@/*": ["./src/*"]
     },
     "types": ["jest", "node"],
     "outDir": "dist",
+    "rootDir": "src",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
-    "../../apps/mw-home/.next/types/**/*.ts",
-    "../../dist/apps/mw-home/.next/types/**/*.ts",
-    "next-env.d.ts",
-    "src/**/*.js",
-    "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "../../apps/mw-pdp/.next/types/**/*.ts",
+    "../../dist/apps/mw-pdp/.next/types/**/*.ts",
+    "next-env.d.ts"
   ],
   "exclude": [
     "out-tsc",

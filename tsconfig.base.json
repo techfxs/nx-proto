@@ -18,7 +18,8 @@
     "target": "es2022",
     "customConditions": ["@nx-proto/source"],
     "paths": {
-      "@nx-proto/mw-ui": ["packages/mw-ui/src/index.ts"]
+      "@nx-proto/mw-ui": ["packages/mw-ui/src/index.ts"],
+      "@nx-proto/mw-experiments": ["packages/mw-experiments/src/index.ts"]
     }
   }
 }
