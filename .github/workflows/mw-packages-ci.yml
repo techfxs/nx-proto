@@ -1,0 +1,44 @@
+name: MW UI Packages CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/mw-ui/**'
+      - 'package*.json'
+  pull_request:
+    paths:
+      - 'packages/mw-ui/**'
+      - 'package*.json'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Lint mw-ui
+        run: npx nx lint mw-ui
+
+      - name: Test mw-ui
+        run: npx nx test mw-ui
+
+      - name: Typecheck mw-ui
+        run: npx nx typecheck mw-ui
+
+      - run: npx nx fix-ci
+        if: always()

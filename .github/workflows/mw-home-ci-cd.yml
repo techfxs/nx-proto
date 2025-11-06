@@ -1,0 +1,79 @@
+name: MW Home CI/CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/mw-home/**'
+      - 'packages/mw-ui/**'
+      - 'package*.json'
+  pull_request:
+    paths:
+      - 'apps/mw-home/**'
+      - 'packages/mw-ui/**'
+      - 'package*.json'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npx playwright install --with-deps
+
+      - name: Lint mw-home
+        run: npx nx lint mw-home
+
+      - name: Test mw-home
+        run: npx nx test mw-home
+
+      - name: Typecheck mw-home
+        run: npx nx typecheck mw-home
+
+      - name: Build mw-home
+        run: npx nx build mw-home --prod
+
+      - name: E2E mw-home
+        run: npx nx e2e mw-home-e2e
+
+      - run: npx nx fix-ci
+        if: always()
+
+  deploy:
+    needs: ci
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build mw-home for production
+        run: npx nx build mw-home --prod
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_MW_HOME }}
+          working-directory: ./apps/mw-home
+          vercel-args: '--prod'
