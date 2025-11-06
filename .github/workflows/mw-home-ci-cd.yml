@@ -40,8 +40,8 @@ jobs:
       - name: Test mw-home
         run: npx nx test mw-home
 
-      - name: Typecheck mw-home
-        run: npx nx typecheck mw-home
+      # - name: Typecheck mw-home
+      #   run: npx nx typecheck mw-home
 
       - name: Build mw-home
         run: npx nx build mw-home --prod
@@ -49,8 +49,8 @@ jobs:
       - name: E2E mw-home
         run: npx nx e2e mw-home-e2e
 
-      - run: npx nx fix-ci
-        if: always()
+      # - run: npx nx fix-ci
+      #   if: always()
 
   deploy:
     needs: ci

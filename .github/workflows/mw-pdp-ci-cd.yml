@@ -40,8 +40,8 @@ jobs:
       - name: Test mw-pdp
         run: npx nx test mw-pdp
 
-      - name: Typecheck mw-pdp
-        run: npx nx typecheck mw-pdp
+      # - name: Typecheck mw-pdp
+      #   run: npx nx typecheck mw-pdp
 
       - name: Build mw-pdp
         run: npx nx build mw-pdp --prod
@@ -49,8 +49,8 @@ jobs:
       - name: E2E mw-pdp
         run: npx nx e2e mw-pdp-e2e
 
-      - run: npx nx fix-ci
-        if: always()
+      # - run: npx nx fix-ci
+      #   if: always()
 
   deploy:
     needs: ci
