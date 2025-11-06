@@ -8,11 +8,13 @@ on:
       - 'apps/mw-pdp/**'
       - 'packages/mw-ui/**'
       - 'package*.json'
+      - '.github/workflows/mw-pdp-ci-cd.yml'
   pull_request:
     paths:
       - 'apps/mw-pdp/**'
       - 'packages/mw-ui/**'
       - 'package*.json'
+      - '.github/workflows/mw-pdp-ci-cd.yml'
 
 permissions:
   actions: read

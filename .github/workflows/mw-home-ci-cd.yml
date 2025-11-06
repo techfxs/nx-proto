@@ -8,12 +8,13 @@ on:
       - 'apps/mw-home/**'
       - 'packages/mw-ui/**'
       - 'package*.json'
+      - '.github/workflows/mw-home-ci-cd.yml'
   pull_request:
     paths:
       - 'apps/mw-home/**'
       - 'packages/mw-ui/**'
       - 'package*.json'
-
+      - '.github/workflows/mw-home-ci-cd.yml'
 permissions:
   actions: read
   contents: read
