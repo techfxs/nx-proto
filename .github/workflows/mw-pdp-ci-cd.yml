@@ -58,8 +58,8 @@ jobs:
 
       - run: npm ci
 
-      - name: Build mw-pdp for production
-        run: npx nx build mw-pdp --prod
+      # - name: Build mw-pdp for production
+      #   run: npx nx build mw-pdp --prod
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
