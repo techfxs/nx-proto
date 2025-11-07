@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npx nx build --prod",
+  "buildCommand": "cd ../.. && npx nx build mw-pdp --prod",
   "outputDirectory": "./.next",
-  "installCommand": "npm ci",
+  "installCommand": "cd ../.. && npm ci",
   "framework": "nextjs",
   "ignoreCommand": "exit 0"
 }
