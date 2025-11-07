@@ -34,7 +34,6 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
-      # - run: npx playwright install --with-deps
 
       - name: Lint mw-pdp
         run: npx nx lint mw-pdp
@@ -42,17 +41,8 @@ jobs:
       - name: Test mw-pdp
         run: npx nx test mw-pdp
 
-      # - name: Typecheck mw-pdp
-      #   run: npx nx typecheck mw-pdp
-
       - name: Build mw-pdp
         run: npx nx build mw-pdp --prod
-
-      # - name: E2E mw-pdp
-      #   run: npx nx e2e mw-pdp-e2e
-
-      # - run: npx nx fix-ci
-      #   if: always()
 
   deploy:
     needs: ci
@@ -71,11 +61,19 @@ jobs:
       - name: Build mw-pdp for production
         run: npx nx build mw-pdp --prod
 
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: ./apps/mw-pdp
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.PDP_VERCEL_PROJECT_ID }}
+
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID_MW_PDP }}
-          working-directory: ./apps/mw-pdp
-          vercel-args: '--prod'
+        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: ./apps/mw-pdp
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_MW_PDP }}
