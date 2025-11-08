@@ -20,6 +20,12 @@
     },
     {
       "path": "./apps/mw-pdp"
+    },
+    {
+      "path": "./packages/header"
+    },
+    {
+      "path": "./packages/footer"
     }
   ]
 }

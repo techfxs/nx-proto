@@ -1,4 +1,6 @@
 import './global.css';
+import { AppHeader } from '@nx-proto/header';
+import { AppFooter } from '@nx-proto/footer';
 
 export const metadata = {
   title: 'Welcome to mw-pdp',
@@ -12,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppHeader />
+        {children}
+        <AppFooter />
+      </body>
     </html>
   );
 }

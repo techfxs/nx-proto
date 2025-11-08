@@ -5,6 +5,12 @@
       "path": "../../packages/mw-ui"
     },
     {
+      "path": "../../packages/footer"
+    },
+    {
+      "path": "../../packages/header"
+    },
+    {
       "path": "../../packages/mw-experiments"
     }
   ],
