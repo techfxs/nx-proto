@@ -77,5 +77,14 @@
         "unitTestRunner": "jest"
       }
     }
+  },
+  "release": {
+    "projectsRelationship": "independent",
+    "changelog": {
+      "projectChangelogs": true
+    },
+    "version": {
+      "updateDependents": "always"
+    }
   }
 }
